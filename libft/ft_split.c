@@ -24,12 +24,12 @@ static int	count_word(char const *s, char c)
 {
 	int	i;
 	int	word;
-	
+
 	i = 0;
 	word = 0;
 	while (*s)
 	{
-		if(s[i] != c && (s[i + 1] == c || s[i + 1] == '\0'))
+		if (s[i] != c && (s[i + 1] == c || s[i + 1] == '\0'))
 			word++;
 		s++;
 	}
