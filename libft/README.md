@@ -21,7 +21,7 @@ Peer-to-peer discussions
 AI
 AI Usage:
 AI tools were used only for explanations of concepts and function specifications. No code was copied directly from AI-generated output.
-## Detail description of the library
+## Detailed library description
 libft is a custom static C library (libft.a) that reimplements essential functions from the C standard library, along with additional utility functions.
 The goal of this project is to build a solid foundation of reusable, well-tested functions that can be used in future C projects without relying on external libraries.
 This library is organized into four main categories:
