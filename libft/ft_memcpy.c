@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brportos <brportos@student.42antananarivo. +#+  +:+       +#+        */
+/*   By: brportos <brportos@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 07:54:13 by brportos          #+#    #+#             */
-/*   Updated: 2026/02/01 10:43:49 by brportos         ###   ########.fr       */
+/*   Updated: 2026/02/05 22:04:38 by brportos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,15 @@
 void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
 	size_t			i;
-	unsigned char	*dst;
-	unsigned char	*srce;
+	unsigned char	*dest_tmp;
+	unsigned char	*src_tmp;
 
-	if (!dest && !src)
-		return (NULL);
 	i = 0;
-	dst = (unsigned char *)dest;
-	srce = (unsigned char *)src;
+	dest_tmp = (unsigned char *)dest;
+	src_tmp = (unsigned char *)src;
 	while (i < n)
 	{
-		dst[i] = srce[i];
+		dest_tmp[i] = src_tmp[i];
 		i++;
 	}
 	return (dest);

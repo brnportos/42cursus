@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brportos <brportos@student.42antananarivo. +#+  +:+       +#+        */
+/*   By: brportos <brportos@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 11:20:49 by brportos          #+#    #+#             */
-/*   Updated: 2026/02/01 10:43:43 by brportos         ###   ########.fr       */
+/*   Updated: 2026/02/05 22:05:06 by brportos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,17 @@
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	unsigned char	*dst;
-	unsigned char	*srce;
+	unsigned char	*dest_tmp;
+	unsigned char	*src_tmp;
 
-	if (!dest || !src)
-		return (NULL);
-	dst = (unsigned char *)dest;
-	srce = (unsigned char *)src;
-	if (srce < dst)
+	dest_tmp = (unsigned char *)dest;
+	src_tmp = (unsigned char *)src;
+	if (src_tmp < dest_tmp)
 	{
 		while (n-- > 0)
-			dst[n] = srce[n];
+			dest_tmp[n] = src_tmp[n];
 	}
-	else if (srce == dst)
-		return (dst);
 	else
-		ft_memcpy(dst, srce, n);
+		ft_memcpy(dest_tmp, src_tmp, n);
 	return (dest);
 }

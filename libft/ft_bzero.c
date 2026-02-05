@@ -6,7 +6,7 @@
 /*   By: brportos <brportos@student.42antananarivo. +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 07:19:53 by brportos          #+#    #+#             */
-/*   Updated: 2026/02/01 10:46:26 by brportos         ###   ########.fr       */
+/*   Updated: 2026/02/05 07:55:50 by brportos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	unsigned char	*ptr;
+	unsigned char	*buf;
 
-	ptr = (unsigned char *)s;
-	ft_memset(ptr, 0, n);
+	buf = (unsigned char *)s;
+	ft_memset(buf, 0, n);
 }

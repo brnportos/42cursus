@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brportos <brportos@student.42antananarivo. +#+  +:+       +#+        */
+/*   By: brportos <brportos@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/20 10:08:40 by brportos          #+#    #+#             */
-/*   Updated: 2026/02/01 10:43:38 by brportos         ###   ########.fr       */
+/*   Updated: 2026/02/05 22:04:14 by brportos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,14 @@
 
 void	*ft_memset(void *s, int c, size_t n)
 {
-	unsigned char	*ptr;
+	unsigned char	*s_buf;
 	unsigned char	val;
 	size_t			i;
 
-	if (!s)
-		return (NULL);
-	ptr = (unsigned char *)s;
+	s_buf = (unsigned char *)s;
 	val = (unsigned char)c;
 	i = 0;
 	while (i < n)
-		ptr[i++] = val;
+		s_buf[i++] = val;
 	return (s);
 }
