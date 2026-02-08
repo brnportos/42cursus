@@ -3,22 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: brportos <brportos@student.42antananarivo. +#+  +:+       +#+        */
+/*   By: brportos <brportos@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/27 20:21:24 by brportos          #+#    #+#             */
-/*   Updated: 2026/02/01 14:48:17 by brportos         ###   ########.fr       */
+/*   Updated: 2026/02/08 13:27:50 by brportos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-
-static int	ft_check(char s, char c)
-{
-	if (s == c)
-		return (1);
-	else
-		return (0);
-}
 
 static int	count_word(char const *s, char c)
 {
@@ -56,6 +48,25 @@ static char	*word_dup(char const *s, int len)
 	return (dup);
 }
 
+int	ft_len(char const *s, char c)
+{
+	int	j;
+
+	j = 0;
+	while (s[j] && (s[j] != c))
+		j++;
+	return (j);
+}
+
+char	**ft_free(char **split, int len)
+{
+	while (len-- >= 0)
+		free(split[len]);
+	free(split);
+	split = NULL;
+	return (NULL);
+}
+
 char	**ft_split(char const *s, char c)
 {
 	int		i;
@@ -70,14 +81,14 @@ char	**ft_split(char const *s, char c)
 		return (NULL);
 	while (*s)
 	{
-		j = 0;
-		while (*s && ft_check(*s, c))
+		while (*s && (*s == c))
 			s++;
-		while (s[j] && !ft_check(s[j], c))
-			j++;
+		j = ft_len(s, c);
 		if (*s)
 			split[i++] = word_dup(s, j);
-		while (*s && !ft_check(*s, c))
+		if (!split)
+			return (ft_free(split, i));
+		while (*s && (*s != c))
 			s++;
 	}
 	split[i] = NULL;
