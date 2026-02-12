@@ -9,7 +9,12 @@ SRC_DIR = src
 SRC = ft_putchar.c \
 		ft_putstr.c \
 		ft_putnbr.c \
-		ft_unputnbr.c 
+		ft_putunnbr.c \
+		ft_puthex.c \
+		ft_putHEX.c \
+		ft_strlcpy.c \
+		ft_strlen.c \
+		ft_putaddress.c
 
 OBJ = $(SRC:%.c=$(OBJ_DIR)/%.o)
 
