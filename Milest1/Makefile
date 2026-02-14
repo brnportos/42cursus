@@ -10,11 +10,13 @@ SRC = ft_putchar.c \
 		ft_putstr.c \
 		ft_putnbr.c \
 		ft_putunnbr.c \
-		ft_puthex.c \
-		ft_putHEX.c \
+		ft_putlowhex.c \
+		ft_putuphex.c \
 		ft_strlcpy.c \
 		ft_strlen.c \
-		ft_putaddress.c
+		ft_putaddress.c \
+		ft_conversion.c \
+		ft_printf.c 
 
 OBJ = $(SRC:%.c=$(OBJ_DIR)/%.o)
 

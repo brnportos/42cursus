@@ -1,24 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putunnbr.c                                      :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brportos <brportos@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/13 11:44:19 by brportos          #+#    #+#             */
-/*   Updated: 2026/02/14 10:51:27 by brportos         ###   ########.fr       */
+/*   Created: 2026/02/14 10:32:52 by brportos          #+#    #+#             */
+/*   Updated: 2026/02/14 10:58:53 by brportos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf.h"
 
-void	ft_putunnbr(unsigned int nbr, int *len)
+int	ft_printf(const char *str, ...)
 {
-	if (nbr >= 10)
+	va_list	ap;
+	int		len;
+
+	len = 0;
+	if (!str)
+		return (0);
+	va_start(ap, str);
+	while (*str)
 	{
-		ft_putunnbr(nbr / 10, len);
-		ft_putunnbr(nbr % 10, len);
+		if (*str == '%')
+		{
+			str++;
+			ft_conversion(&ap, (char *)str, &len);
+		}
+		else
+			ft_putchar(*str, &len);
+		str++;
 	}
-	else if (nbr >= 0)
-		ft_putchar(nbr + '0', len);
+	va_end(ap);
+	return (len);
 }
