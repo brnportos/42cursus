@@ -6,7 +6,7 @@
 /*   By: brportos <brportos@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/14 10:16:45 by brportos          #+#    #+#             */
-/*   Updated: 2026/02/14 11:01:04 by brportos         ###   ########.fr       */
+/*   Updated: 2026/02/16 09:32:52 by brportos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	ft_conversion(va_list *ap, char *str, int *len)
 {
+	if (!len || !str || !ap)
+		return ;
 	if (*str == 'c')
 		ft_putchar(va_arg(*ap, int), len);
 	else if (*str == 's')
@@ -21,15 +23,15 @@ void	ft_conversion(va_list *ap, char *str, int *len)
 	else if (*str == 'p')
 		ft_putaddress(va_arg(*ap, void *), len);
 	else if (*str == 'd' || *str == 'i')
-		ft_putnbr(va_arg(*ap, int), len);
+		ft_putnbr((int)va_arg(*ap, int), len);
 	else if (*str == 'u')
 		ft_putunnbr(va_arg(*ap, unsigned int), len);
 	else if (*str == 'x' || *str == 'X')
 	{
 		if (*str == 'x')
-			ft_putlowhex(va_arg(*ap, unsigned long long), len);
+			ft_putlowhex(va_arg(*ap, unsigned int), len);
 		else
-			ft_putuphex(va_arg(*ap, unsigned long long), len);
+			ft_putuphex(va_arg(*ap, unsigned int), len);
 	}
 	else if (*str == '%')
 		ft_putchar(*str, len);

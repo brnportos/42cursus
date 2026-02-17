@@ -6,7 +6,7 @@
 /*   By: brportos <brportos@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/13 11:43:53 by brportos          #+#    #+#             */
-/*   Updated: 2026/02/13 11:43:54 by brportos         ###   ########.fr       */
+/*   Updated: 2026/02/16 12:55:52 by brportos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	ft_putchar(char c, int *len)
 {
+	if (!len)
+		return ;
 	write(1, &c, 1);
 	(*len)++;
 }

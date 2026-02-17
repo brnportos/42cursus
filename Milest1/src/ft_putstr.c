@@ -6,7 +6,7 @@
 /*   By: brportos <brportos@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/13 11:44:15 by brportos          #+#    #+#             */
-/*   Updated: 2026/02/13 11:44:16 by brportos         ###   ########.fr       */
+/*   Updated: 2026/02/14 14:59:14 by brportos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	ft_putstr(char *str, int *len)
 	int	i;
 
 	i = 0;
+	if (!str || !len)
+		return ;
 	while (str[i])
 	{
 		ft_putchar(str[i], len);

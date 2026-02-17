@@ -6,7 +6,7 @@
 /*   By: brportos <brportos@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/13 11:44:19 by brportos          #+#    #+#             */
-/*   Updated: 2026/02/14 10:51:27 by brportos         ###   ########.fr       */
+/*   Updated: 2026/02/16 09:49:36 by brportos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,13 @@
 
 void	ft_putunnbr(unsigned int nbr, int *len)
 {
+	if (!len)
+		return ;
 	if (nbr >= 10)
 	{
 		ft_putunnbr(nbr / 10, len);
 		ft_putunnbr(nbr % 10, len);
 	}
-	else if (nbr >= 0)
+	else
 		ft_putchar(nbr + '0', len);
 }

@@ -6,7 +6,7 @@
 /*   By: brportos <brportos@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 13:53:18 by brportos          #+#    #+#             */
-/*   Updated: 2026/02/13 11:44:24 by brportos         ###   ########.fr       */
+/*   Updated: 2026/02/14 15:01:55 by brportos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 	size_t	src_len;
 
 	src_len = ft_strlen(src);
+	if (!dst || !src)
+		return (0);
 	if (size == 0)
 		return (src_len);
 	i = 0;

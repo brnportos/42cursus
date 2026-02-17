@@ -1,12 +1,12 @@
 NAME = libftprintf.a
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -I/include
+CFLAGS = -Wall -Wextra -Werror -I/include -g
 
 OBJ_DIR = obj
 SRC_DIR = src
 
-SRC = ft_putchar.c \
+SRC = ft_putchar.c\
 		ft_putstr.c \
 		ft_putnbr.c \
 		ft_putunnbr.c \
@@ -16,7 +16,7 @@ SRC = ft_putchar.c \
 		ft_strlen.c \
 		ft_putaddress.c \
 		ft_conversion.c \
-		ft_printf.c 
+		ft_printf.c
 
 OBJ = $(SRC:%.c=$(OBJ_DIR)/%.o)
 
