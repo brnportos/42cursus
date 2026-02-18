@@ -6,7 +6,7 @@
 /*   By: brportos <brportos@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/13 11:40:07 by brportos          #+#    #+#             */
-/*   Updated: 2026/02/16 13:04:14 by brportos         ###   ########.fr       */
+/*   Updated: 2026/02/17 12:35:52 by brportos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,3 @@ void	ft_putaddress(void *ptr, int *len)
 	ft_putstr("0x", len);
 	ft_putlowhexa(address, len);
 }
-
-
