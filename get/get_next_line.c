@@ -12,93 +12,98 @@
 
 #include "get_next_line.h"
 
-char	*read_and_store(int fd, char *store)
+char	*read_and_store(int fd, char *buf_tmp)
 {
-	char	*buffer;
-	int		read_bytes;
+	char	*buf;
+	ssize_t		buf_size;
 
-	buffer = malloc(BUFFER_SIZE + 1);
-	if (!buffer)
+	buf = malloc(BUFFER_SIZE + 1);
+	if (!buf)
 		return (NULL);
-	read_bytes = 1;
-	while (!ft_strchr(store, '\n') && read_bytes > 0)
+	buf_size = 1;
+	while (!ft_strchr(buf_tmp, '\n') && buf_size > 0)
 	{
-		read_bytes = read(fd, buffer, BUFFER_SIZE);
-		if (read_bytes == -1)
+		buf_size = read(fd, buf, BUFFER_SIZE);
+		if (buf_size == -1)
 		{
-			free(buffer);
-			free(store);
+			free(buf);
+			buf = NULL;
+			free(buf_tmp);
+			buf_tmp = NULL;
 			return (NULL);
 		}
-		buffer[read_bytes] = '\0';
-		store = ft_strjoin(store, buffer);
+		buf[buf_size] = '\0';
+		buf_tmp = ft_strjoin(buf_tmp, buf);
 	}
-	free(buffer);
-	return (store);
+	free(buf);
+	buf = NULL;
+	return (buf_tmp);
 }
 
-char	*extract_line(char *store)
+char	*extract_line(char *buf_tmp)
 {
 	char	*line;
 	int		i;
 
 	i = 0;
-	if (!store[i])
+	if (!buf_tmp)
 		return (NULL);
-	while (store[i] && store[i] != '\n')
+	while (buf_tmp[i] && buf_tmp[i] != '\n')
 		i++;
 	line = malloc(i + 2);
 	if (!line)
 		return (NULL);
 	i = 0;
-	while (store[i] && store[i] != '\n')
+	while (buf_tmp[i] && buf_tmp[i] != '\n')
 	{
-		line[i] = store[i];
+		line[i] = buf_tmp[i];
 		i++;
 	}
-	if (store[i] == '\n')
+	if (buf_tmp[i] == '\n')
 		line[i++] = '\n';
 	line[i] = '\0';
 	return (line);
 }
 
-char	*update_storage(char *store)
+char	*update_storage(char *buf_tmp)
 {
 	int		i;
 	int		j;
-	char	*new_store;
+	char	*keep_tmp;
 
 	i = 0;
-	while (store[i] && store[i] != '\n')
+	while (buf_tmpi] && buf_tmp[i] != '\n')
 		i++;
-	if (!store[i])
+	if (!buf_tmp[i])
 	{
-		free(store);
+		free(buf_tmp);
+		buf_tmp = NULL;
 		return (NULL);
 	}
-	new_store = malloc(ft_strlen(store) - i + 1);
-	if (!new_store)
+	keep_tmp = malloc(ft_strlen(buf_tmp) - i + 1);
+	if (!keep_tmp)
 		return (NULL);
 	i++;
 	j = 0;
-	while (store[i])
-		new_store[j++] = store[i++];
-	new_store[j] = '\0';
-	free(store);
-	return (new_store);
+	while (buf_tmp[i])
+		keep_tmp[j++] = buf_tmp[i++];
+	keep_tmp[j] = '\0';
+	free(buf_tmp);
+	buf_tmp = NULL;
+	return (keep_tmp);
 }
 
 char	*get_next_line(int fd)
 {
-	static char	*store;
+	static char	*buf_tmp;
 	char		*line;
 
-	if (!(fd >= 0 && BUFFER_SIZE > 0))
+	if (fd < 0 && BUFFER_SIZE <= 0)
 		return (NULL);
-	store = read_and_store(fd, store);
-	if (!store)
+	buf_tmp = read_and_store(fd, buf_tmp);
+	if (!buf_tmp)
 		return (NULL);
-	line = extract_line(store);
-	store = update_storage(store);
+	line = extract_line(buf_tmp);
+	buf_tmp = update_storage(buf_tmp);
 	return (line);
 }
