@@ -6,7 +6,7 @@
 /*   By: brportos <brportos@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/14 10:25:06 by brportos          #+#    #+#             */
-/*   Updated: 2026/02/16 09:18:54 by brportos         ###   ########.fr       */
+/*   Updated: 2026/02/19 10:07:49 by brportos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,8 @@
 
 int		ft_printf(const char *str, ...);
 void	ft_conversion(va_list *ap, char *str, int *len);
-size_t	ft_strlcpy(char *dst, const char *src, size_t size);
 size_t	ft_strlen(const char *s);
 void	ft_putaddress(void *ptr, int *len);
-char	*ft_strcpy(char *dest, const char *src);
 void	ft_putlowhex(unsigned int nbr, int *len);
 void	ft_putunnbr(unsigned int nbr, int *len);
 void	ft_putuphex(unsigned int nbr, int *len);

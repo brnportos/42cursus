@@ -7,7 +7,7 @@ int	main()
 	int	fd = 0;
 	char *buf = NULL;
 
-	fd = open("textt.txt", O_RDONLY);
+	fd = open("text.txt", O_RDONLY);
 	if (fd < 0)
 	{
 		printf ("Error");

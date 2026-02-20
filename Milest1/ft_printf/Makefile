@@ -4,7 +4,6 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -I/include -g
 
 OBJ_DIR = obj
-SRC_DIR = src
 
 SRC = ft_putchar.c\
 		ft_putstr.c \
@@ -12,7 +11,6 @@ SRC = ft_putchar.c\
 		ft_putunnbr.c \
 		ft_putlowhex.c \
 		ft_putuphex.c \
-		ft_strlcpy.c \
 		ft_strlen.c \
 		ft_putaddress.c \
 		ft_conversion.c \
@@ -22,7 +20,7 @@ OBJ = $(SRC:%.c=$(OBJ_DIR)/%.o)
 
 all: $(NAME)
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+$(OBJ_DIR)/%.o: %.c
 	@mkdir -p $(OBJ_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 

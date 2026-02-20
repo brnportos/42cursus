@@ -1,27 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brportos <brportos@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/13 11:44:15 by brportos          #+#    #+#             */
-/*   Updated: 2026/02/14 14:59:14 by brportos         ###   ########.fr       */
+/*   Created: 2026/02/14 10:32:52 by brportos          #+#    #+#             */
+/*   Updated: 2026/02/20 12:06:06 by brportos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
+#include "ft_printf.h"
 
-void	ft_putstr(char *str, int *len)
+int	ft_printf(const char *str, ...)
 {
-	int	i;
+	va_list	ap;
+	int		len;
 
-	i = 0;
-	if (!str || !len)
-		return ;
-	while (str[i])
+	len = 0;
+	if (!str)
+		return (0);
+	va_start(ap, str);
+	while (*str)
 	{
-		ft_putchar(str[i], len);
-		i++;
+		if (*str == '%')
+		{
+			if (*(str + 1) == 32)
+				return (0);
+			str++;
+			ft_conversion(&ap, (char *)str, &len);
+		}
+		else
+			ft_putchar(*str, &len);
+		str++;
 	}
+	va_end(ap);
+	return (len);
 }

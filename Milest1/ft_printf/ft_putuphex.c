@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_putuphex.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: brportos <brportos@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/13 11:43:53 by brportos          #+#    #+#             */
-/*   Updated: 2026/02/16 12:55:52 by brportos         ###   ########.fr       */
+/*   Created: 2026/02/13 11:44:02 by brportos          #+#    #+#             */
+/*   Updated: 2026/02/20 12:06:39 by brportos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
+#include "ft_printf.h"
 
-void	ft_putchar(char c, int *len)
+void	ft_putuphex(unsigned int nbr, int *len)
 {
+	char	*base;
+
+	base = "0123456789ABCDEF";
 	if (!len)
 		return ;
-	write(1, &c, 1);
-	(*len)++;
+	if (nbr > 15)
+		ft_putuphex(nbr / 16, len);
+	ft_putchar(base[nbr % 16], len);
 }

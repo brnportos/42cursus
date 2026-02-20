@@ -6,11 +6,11 @@
 /*   By: brportos <brportos@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/14 10:16:45 by brportos          #+#    #+#             */
-/*   Updated: 2026/02/16 09:32:52 by brportos         ###   ########.fr       */
+/*   Updated: 2026/02/20 12:05:48 by brportos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
+#include "ft_printf.h"
 
 void	ft_conversion(va_list *ap, char *str, int *len)
 {
@@ -35,6 +35,5 @@ void	ft_conversion(va_list *ap, char *str, int *len)
 	}
 	else if (*str == '%')
 		ft_putchar(*str, len);
-	else
-		ft_putchar(*str, len);
+	return ;
 }

@@ -6,11 +6,11 @@
 /*   By: brportos <brportos@student.42antananari    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/13 11:40:07 by brportos          #+#    #+#             */
-/*   Updated: 2026/02/17 12:35:52 by brportos         ###   ########.fr       */
+/*   Updated: 2026/02/20 12:06:14 by brportos         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/ft_printf.h"
+#include "ft_printf.h"
 
 static void	ft_putlowhexa(unsigned long long nbr, int *len)
 {
