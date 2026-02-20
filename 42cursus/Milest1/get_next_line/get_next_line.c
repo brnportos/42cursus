@@ -12,7 +12,27 @@
 
 #include "get_next_line.h"
 
-char	*ft_concatenation(int fd, char *keep_tmp)
+size_t ft_strlcpy(char *dst, const char *src, size_t size)
+{
+        size_t  i;
+        size_t  src_len;
+
+        i = 0;
+        src_len = ft_strlen(src);
+        if(!dst || !src)
+                return (0);
+        if(size == 0)
+                return (src_len);
+        while (src[i] && i < size -1)
+        {
+                dst[i] = src[i];
+                i++;
+        }
+        dst[i] = '\0';
+        return (i);
+}
+
+char	*ft_concatenation(int fd, char *tmp)
 {
 	char	*buf;
 	ssize_t	size;
@@ -21,24 +41,25 @@ char	*ft_concatenation(int fd, char *keep_tmp)
 	if (!buf)
 		return (NULL);
 	size = 1;
-	while (!ft_strchr(keep_tmp, '\n') && size > 0)
+	while (!ft_strchr(tmp, '\n') && size > 0)
 	{
 		size = read(fd, buf, BUFFER_SIZE);
 		if (size == -1)
 		{
 			free(buf);
 			buf = NULL;
-			free(keep_tmp);
-			keep_tmp = NULL;
+			free(tmp);
+			tmp = NULL;
 			return (NULL);
 		}
 		buf[size] = '\0';
-		keep_tmp = ft_strjoin(keep_tmp, buf);
+		tmp = ft_strjoin(tmp, buf);
 	}
 	free(buf);
 	buf = NULL;
-	return (keep_tmp);
+	return (tmp);
 }
+
 
 char	*ft_fetch_line(char *tmp)
 {
@@ -50,20 +71,10 @@ char	*ft_fetch_line(char *tmp)
 		return (NULL);
 	while (tmp[i] && tmp[i] != '\n')
 		i++;
-	line = malloc(i + 2);
-	if (!line)
-		return (NULL);
-	i = 0;
-	while (tmp[i] && tmp[i] != '\n')
-	{
-		line[i] = tmp[i];
-		i++;
-	}
-	if (tmp[i] == '\n')
-		line[i++] = '\n';
-	line[i] = '\0';
+	line = ft_substr(tmp, 0, (i + tmp[i] == '\n'));
 	return (line);
 }
+
 
 char	*updating_tmp(char *tmp)
 {
@@ -80,25 +91,19 @@ char	*updating_tmp(char *tmp)
 		tmp = NULL;
 		return (NULL);
 	}
-	keep_tmp = malloc(ft_strlen(tmp) - i + 1);
-	if (!keep_tmp)
-		return (NULL);
-	i++;
-	j = 0;
-	while (tmp[i])
-		keep_tmp[j++] = tmp[i++];
-	keep_tmp[j] = '\0';
+	keep_tmp = ft_strdup(tmp + i + 1);
 	free(tmp);
 	tmp = NULL;
 	return (keep_tmp);
 }
+
 
 char	*get_next_line(int fd)
 {
 	static char	*tmp;
 	char		*line;
 
-	if (fd < 0 && BUFFER_SIZE <= 0)
+	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	tmp = ft_concatenation(fd, tmp);
 	if (!tmp)
